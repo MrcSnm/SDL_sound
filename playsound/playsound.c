@@ -887,6 +887,7 @@ int main(int argc, char **argv)
 
         else
         {
+            filename = argv[i];
             sample = Sound_NewSampleFromFile(filename,
                             use_specific_audiofmt ? &sound_desired : NULL,
                             decode_buffersize);
