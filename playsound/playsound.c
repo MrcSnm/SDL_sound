@@ -654,11 +654,6 @@ static int valid_cmdline(int argc, char **argv)
 static void report_filename(const char *filename)
 {
     const char *icon = "playsound";
-    size_t len = 0;
-    char *buf = NULL;
-    char *ptr = NULL;
-
-    fprintf(stdout, "%s: Now playing [%s]...\n", icon, filename);
 
 #if SDL_MAJOR_VERSION < 2
     /*
@@ -666,6 +661,10 @@ static void report_filename(const char *filename)
      *  PulseAudio application name. It's a harmless no-op elsewhere,
      *  and 2.0 will probably have a formal API for this.
      */
+    size_t len = 0;
+    char *buf = NULL;
+    char *ptr = NULL;
+
     ptr = strrchr(filename, '/');
     if (ptr != NULL)
         filename = ptr + 1;
@@ -684,6 +683,8 @@ static void report_filename(const char *filename)
         SDL_free(buf);
     } /* else */
 #endif
+
+    fprintf(stdout, "%s: Now playing [%s]...\n", icon, filename);
 } /* report_filename */
 
 
